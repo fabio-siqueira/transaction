@@ -14,7 +14,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class TransactionRepositoryTest extends TransactionApplicationTests {
+class TransactionRepositoryIT extends TransactionApplicationTests {
 
     @Autowired
     private TransactionRepository transactionRepository;

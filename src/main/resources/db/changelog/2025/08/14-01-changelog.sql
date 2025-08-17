@@ -6,7 +6,7 @@ CREATE TABLE transaction
     id UUID DEFAULT gen_random_uuid(),
     description      VARCHAR(50),
     transaction_date date         NOT NULL,
-    amount           DECIMAL,
+    amount           DECIMAL(10, 2),
     CONSTRAINT pk_transaction PRIMARY KEY (id)
 );
 
