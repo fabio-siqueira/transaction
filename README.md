@@ -138,4 +138,4 @@ Para executar os testes:
 ## Limitações e Melhorias Futuras
 
 - Implementar segurança (OAuth2, JWT)
-- Adicionar suporte a Docker
+- Adicionar suporte a Docker;
