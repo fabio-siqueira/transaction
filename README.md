@@ -106,7 +106,7 @@ GET /api/transactions/{id}/exchange?targetCurrency={code}
 ## OpenAPI/Swagger
 A documentação da API está disponível em `http://localhost:8080/swagger-ui/index.html` após a execução da aplicação. Você pode visualizar todos os endpoints, parâmetros e exemplos de requisições/respostas.
 
-<img src="https://raw.githubusercontent.com/fabio-siqueira/transaction/main/swagger.png" alt="Swagger UI" width="800"/>
+<img src="docs/swagger-page.png" alt="Swagger UI" width="800"/>
 
 ## Arquitetura
 
