@@ -140,3 +140,10 @@ Para executar os testes:
 
 - Implementar segurança (OAuth2, JWT)
 - Adicionar suporte a Docker
+- Implementar testes de carga e performance
+- Adicionar monitoramento e logging avançado
+- Adicionar suporte a internacionalização (i18n)
+- Implementar CI/CD para automação de build e deploy
+- Uso de ferramentas de análise estática de código
+- Uso de ferramentas de segurança para análise de vulnerabilidades
+- Uso de ferramentas para analise de cobertura de testes
