@@ -22,7 +22,7 @@ public class TransactionExchangeService {
         this.transactionRepository = transactionRepository;
     }
 
-    public TransactionExchange getExchangeRateDecorator(UUID transactionId, String countryCurrency) {
+    public TransactionExchange getTransactionExchange(UUID transactionId, String countryCurrency) {
 
         Transaction transaction = transactionRepository.findById(transactionId)
                 .orElseThrow(() -> new NotFoundException("Transaction not found with ID: " + transactionId));

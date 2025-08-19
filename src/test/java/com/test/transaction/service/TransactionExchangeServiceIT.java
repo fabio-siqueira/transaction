@@ -38,9 +38,9 @@ class TransactionExchangeServiceIT extends TransactionApplicationTests {
     }
 
     @Test
-    void testGetExchangeRateDecorator() {
+    void testGetTransactionExchange() {
         String testCurrency = "Brazil-Real";
-        TransactionExchange response = transactionExchangeService.getExchangeRateDecorator(savedTransaction.getId(), testCurrency);
+        TransactionExchange response = transactionExchangeService.getTransactionExchange(savedTransaction.getId(), testCurrency);
 
         assertThat(response).isNotNull();
         assertThat(response.getTransaction().getId()).isEqualTo(savedTransaction.getId());

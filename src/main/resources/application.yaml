@@ -18,3 +18,7 @@ spring:
       enabled: true
       # default path: h2-console
       path: /h2-ui
+
+api:
+  exchange-rate:
+    base-url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service

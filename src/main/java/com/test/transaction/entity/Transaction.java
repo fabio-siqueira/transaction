@@ -27,6 +27,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @NotNull(message = "Description must not be null")
     @Size(max = 50, message = "Description must not exceed 50 characters")
     private String description;
 
@@ -34,6 +35,7 @@ public class Transaction {
     @NotNull(message = "Transaction date must not be null")
     private LocalDate transactionDate;
 
+    @NotNull(message = "Amount must not be null")
     @Min(value = 0, message = "Amount must be a positive value")
     @Column(precision = 10, scale = 2)
     private BigDecimal amount;

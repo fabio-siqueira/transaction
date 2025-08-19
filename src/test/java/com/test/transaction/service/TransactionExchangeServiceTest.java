@@ -56,14 +56,14 @@ class TransactionExchangeServiceTest {
     }
 
     @Test
-    void getExchangeRateDecorator_shouldReturnCorrectTransactionExchange() {
+    void getExchangeRateDecorator_shouldReturnCorrectTransactionTransactionExchange() {
         // Arrange
         when(transactionRepository.findById(transactionId)).thenReturn(Optional.of(transaction));
         when(exchangeRateRepository.findMostRecentWithinSixMonthsOf("Canada-Dollar", transaction.getTransactionDate()))
                 .thenReturn(Optional.of(exchangeRateData));
 
         // Act
-        TransactionExchange result = transactionExchangeService.getExchangeRateDecorator(transactionId, "Canada-Dollar");
+        TransactionExchange result = transactionExchangeService.getTransactionExchange(transactionId, "Canada-Dollar");
 
         // Assert
         assertThat(result).isNotNull();
@@ -73,31 +73,31 @@ class TransactionExchangeServiceTest {
     }
 
     @Test
-    void getExchangeRateDecorator_shouldThrowNotFoundException_whenTransactionNotFound() {
+    void getTransactionExchange_shouldThrowNotFoundException_whenTransactionNotFound() {
         // Arrange
         when(transactionRepository.findById(transactionId)).thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThatThrownBy(() -> transactionExchangeService.getExchangeRateDecorator(transactionId, "Canada-Dollar"))
+        assertThatThrownBy(() -> transactionExchangeService.getTransactionExchange(transactionId, "Canada-Dollar"))
                 .isInstanceOf(NotFoundException.class)
                 .hasMessageContaining("Transaction not found with ID: " + transactionId);
     }
 
     @Test
-    void getExchangeRateDecorator_shouldThrowUnprocessableEntityException_whenNoExchangeRateFound() {
+    void getExchangeRateDecorator_shouldThrowUnprocessableEntityException_whenNoTransactionExchangeRateFound() {
         // Arrange
         when(transactionRepository.findById(transactionId)).thenReturn(Optional.of(transaction));
         when(exchangeRateRepository.findMostRecentWithinSixMonthsOf("Mexico-Peso", transaction.getTransactionDate()))
                 .thenReturn(Optional.empty());
 
         // Act & Assert
-        assertThatThrownBy(() -> transactionExchangeService.getExchangeRateDecorator(transactionId, "Mexico-Peso"))
+        assertThatThrownBy(() -> transactionExchangeService.getTransactionExchange(transactionId, "Mexico-Peso"))
                 .isInstanceOf(UnprocessableEntityException.class)
                 .hasMessageContaining("The purchase cannot be converted to the target currency: Mexico-Peso");
     }
 
     @Test
-    void getExchangeRateDecorator_shouldCalculateGetConvertedAmountCorrectly() {
+    void getExchangeRateDecorator_shouldCalculateGetTransactionConvertedAmountCorrectly() {
         // Arrange
         transaction.setAmount(new BigDecimal("200.50"));
         exchangeRateData.setExchangeRate(new BigDecimal("0.75"));
@@ -107,7 +107,7 @@ class TransactionExchangeServiceTest {
                 .thenReturn(Optional.of(exchangeRateData));
 
         // Act
-        TransactionExchange result = transactionExchangeService.getExchangeRateDecorator(transactionId, "Japan-Yen");
+        TransactionExchange result = transactionExchangeService.getTransactionExchange(transactionId, "Japan-Yen");
 
         // Assert
         assertThat(result.getConvertedAmount()).isEqualByComparingTo(new BigDecimal("150.38"));
